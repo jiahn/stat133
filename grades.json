@@ -1,0 +1,17 @@
+{
+    "email": "ji.ahn@berkeley.edu", 
+    "github_name": "jiahn", 
+    "grades": {
+        "lab2": {
+            "earned": 10, 
+            "hash": "4d671ee792e814655123587f6d0b0c2288e3b3e1", 
+            "note": "", 
+            "penalty": 0, 
+            "possible": 10
+        }
+    }, 
+    "login": "jiahn", 
+    "name": "Ji Ahn", 
+    "status": "enrolled", 
+    "url": "git@github.com:jiahn/stat133.git"
+}
