@@ -4,13 +4,11 @@
 ##   of the file by calling this file with `Rscript` from a Bash prompt.
 
 mySD <- function(x) {
-    ## Take in a vector of numbers and return its standard deviation.
-    "NotImplemented"
+    return(sqrt(var(x)))
 }
 
 myMean <- function(x) {
-    ## Take in a vector of numbers and return its mean.
-    "NotImplemented"
+    sum(x) / length(x)
 }
 
 ## tests
