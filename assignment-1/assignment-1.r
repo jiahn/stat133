@@ -114,12 +114,12 @@ max.differences.day = subset.2010$day[temp.differences == max.differences]
 # temperatures below the 65th percentile. Use strict inequalities when
 # determining these subsets
     
-greater = subset.2010$max
+greater = temperature.data$max
 cutoff = quantile(greater,c(0.65))
-greaterdays = subset.2010$day[subset.2010$max > 63.45]
-lowerdays = subset.2010$day[subset.2010$max < 63.45]
-mean.low.above = mean(subset.2010$min[greaterdays])
-mean.low.below = mean(subset.2010$min[lowerdays])
+greaterdays = temperature.data$day[temperature.data$max > cutoff]
+lowerdays = temperature.data$day[temperature.data$max < cutoff]
+mean.low.above = mean(temperature.data$min[greaterdays])
+mean.low.below = mean(temperature.data$min[lowerdays])
 
 # --------------------------------------------------------------
 # Problem 3
