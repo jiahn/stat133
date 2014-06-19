@@ -27,8 +27,8 @@ errmsg = function(err) print(paste("ERROR:  ",err))
 # are loading here.
 
 temperature.data <-
-    read.table('http://www.stat.berkeley.edu/classes/s133/data/january.tab',
-               header=T)
+  read.table('http://www.stat.berkeley.edu/classes/s133/data/january.tab',
+             header=T)
 
 load('assignment-1-3.Rda')
 
@@ -42,7 +42,8 @@ toCelcius <- function(temp.far) {
     # <temp.far> and return the values of each entry in Celcius
 
     #your code here
-
+	celsius = (temp.far - 32) * (5/9)
+	return(celsius)
 }
 
 
@@ -70,9 +71,12 @@ calculateS <- function(data, selected.year, selected.day) {
     if ((selected.year < 2005 | selected.year > 2011) | (selected.day < 1 |
                                                          selected.day > 31))
         stop('invalid date')
-    
-    #your code here
-    
+  subset.year = data[data$year == selected.year,]
+  subset.daymax = subset.year$max[subset.year$day == selected.day]
+  subset.daymin = subset.year$min[subset.year$day == selected.day]
+  subset.dayavg = subset.year$mean[subset.year$day == selected.day]
+  result = (subset.daymax - subset.daymin)/subset.dayavg
+	return(result)
 }
 
 
@@ -96,10 +100,10 @@ tryCatch(
 #spread and the day on which it occured.  Store these as the variables:
 #<subset.2010>, <temp.differences>, <max.difference>, and <max.difference.day>.
 
-#subset.2010 <- #your code here
-#temp.differences <- #your code here
-#max.differences <- #your code here
-#max.differences.day <- #your code here
+subset.2010 = temperature.data[temperature.data$year == 2010,]
+temp.differences = subset.2010$max - subset.2010$min
+max.differences = max(temp.differences)
+max.differences.day = subset.2010$day[temp.differences == max.differences]
 
 
 # --------------------------------------------------------------
@@ -110,9 +114,12 @@ tryCatch(
 # temperatures below the 65th percentile. Use strict inequalities when
 # determining these subsets
     
-#your code here
-#mean.low.above <- #your code here
-#mean.low.below <- #your code here
+greater = subset.2010$max
+cutoff = quantile(greater,c(0.65))
+greaterdays = subset.2010$day[subset.2010$max > 63.45]
+lowerdays = subset.2010$day[subset.2010$max < 63.45]
+mean.low.above = mean(subset.2010$min[greaterdays])
+mean.low.below = mean(subset.2010$min[lowerdays])
 
 # --------------------------------------------------------------
 # Problem 3
@@ -126,13 +133,15 @@ tryCatch(
 # <observed.types> respectively.
 
 #your code here
-#observed.diets <- #your code here
-#observed.types <- #your code here
-
+typenum = match(observed.animals, animal.key$animal)
+observed.diets = animal.key$diet[typenum]
+observed.types = animal.key$type[typenum]
 # Use your newly created vectors to calculate the total number of observed
 # animals that are both carnivores and mammals.  Store this variable as
 # <carnivore.mammals>
 
-#n.carnivore.mammals <- #your code here
+mammals = (observed.types == "mammal")
+carnivores = (observed.types == "carnivore")
+n.carnivore.mammals = sum((carnivores == mammals) == TRUE)
 
     
