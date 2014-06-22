@@ -2,6 +2,13 @@
     "email": "ji.ahn@berkeley.edu", 
     "github_name": "jiahn", 
     "grades": {
+        "assignment-1": {
+            "earned": 28, 
+            "hash": "50e71bd13b39bcc6ce4b4688670250ed337b0f73", 
+            "note": "", 
+            "penalty": 0, 
+            "possible": 30
+        }, 
         "lab2": {
             "earned": 10, 
             "hash": "4d671ee792e814655123587f6d0b0c2288e3b3e1", 
