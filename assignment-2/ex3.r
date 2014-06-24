@@ -32,8 +32,10 @@ errMsg <- function(err) print(paste('ERROR:', err))
 
 smokeDiff <- function(data.subset) {
 
-    # your code here
-
+    noSmoke = sum(data.subset$bwt[data.subset$smoke == 0]) / length(data.subset$bwt[data.subset$smoke == 0])
+    Smoke = sum(data.subset$bwt[data.subset$smoke == 1]) / length(data.subset$bwt[data.subset$smoke == 1])
+    normalized.diff = (Smoke - noSmoke) / sd(data.subset$bwt)
+    return(normalized.diff)
 }
 
 
@@ -57,7 +59,12 @@ smokeDiff <- function(data.subset) {
 
 heavyDiff <- function(data.subset, weight.cutoff) {
 
-    # your code here
+  heavyMomBabies = data.subset$bwt[data.subset$weight > weight.cutoff]
+  lightMomBabies = data.subset$bwt[data.subset$weight <= weight.cutoff]
+  heavyBabies = mean(heavyMomBabies)
+  lightBabies = mean(lightMomBabies)
+  normalized.diff = (heavyBabies - lightBabies) / sd(data.subset$bwt)
+  return(normalized.diff)
 
 }
 
@@ -80,8 +87,6 @@ heavyDiff <- function(data.subset, weight.cutoff) {
 
 superSubset <- function(data, max.height, max.weight, max.age, parity) {
 
-    #your code here
-    
     subset.idcs <- which(data$height<=max.height & data$weight<=max.weight &
                          data$age<=max.age & data$parity==parity)
     return(subset.idcs)
