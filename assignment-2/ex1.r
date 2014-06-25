@@ -18,13 +18,15 @@ load('ex1_tests.Rda')
 
 readRemove <- function(file.name, max.na=0, sep=',', header=F) {
 
-    #not done yet - finish by Tuesday night!
-    data = read.table(file.name, header, sep = sep)
-    i = 0
-    for i < ncol(data) {
-      i = i + 1
-      is.na(data[,1])
+    data = read.table(file.name, sep = sep, header = header)
+    sumRowNA = apply(data, 1, function(x) { sum(is.na(x)) } )
+    rowsToRemove = which(sumRowNA > max.na)
+    length = length(rowsToRemove)
+    if (length == 0) {
+      data = data
     }
+    else
+    data = data[-rowsToRemove,]
     
 }
 
