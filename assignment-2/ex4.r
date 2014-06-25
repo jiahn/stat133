@@ -87,7 +87,7 @@ rankAGD <- function(data) {
 # ratios less than 0.12. Store this varialbe as <low.cfr.teams>. Run your
 # "rankAGD" function on this subset and store the variable as <low.cfr.rank>.
 
-wc.data = read.table("~/GitHub/stat133/src/assignment-2/world_cup.data", header=TRUE, quote="\"")
+wc.data = read.table("world_cup.data", header=TRUE, quote="\"")
 cfr.teams = sapply(wc.data$team, function(team) cardFoulRatio(wc.data, team))
 low.cfr.teams = wc.data[(cfr.teams < 0.12),]
 low.cfr.rank = rankAGD(low.cfr.teams)
