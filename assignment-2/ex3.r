@@ -104,9 +104,9 @@ superSubset <- function(data, max.height, max.weight, max.age, parity) {
 # <mothers.subset>. Store this variable as <subset.diff>.
 
 
-# babies.data <- load the data here
-# mothers.subset <- # your code here
-# subset.diff <- # your code here
+babies.data = read.csv("~/GitHub/stat133/src/assignment-2/babies.csv")
+mothers.subset = superSubset(babies.data, 65, 150, 30, 0)
+subset.diff = smokeDiff(babies.data[mothers.subset,])
 
 # tests for smokeDiff
 tryCatch(checkEquals(-0.4639051, smokeDiff(babies.data[1:500, ]),
