@@ -22,7 +22,14 @@ load('ex2-tests.rda')
 
 simpleNormSim <- function(means, sim.size=50, var=1) {
 
-    # your code here
+    i = length(means)
+    outlist = 1:i
+    for (i in 1:i) {
+      listRandom = rnorm(sim.size, mean = means[i], sd = sqrt(var))
+      outlist[i] = list(listRandom)
+    }
+    simulation = outlist
+    return(simulation)
 }
 
 set.seed(47)
@@ -54,7 +61,15 @@ tryCatch(checkIdentical(simple.norm.sim.t, simpleNormSim(c(25, 50, 75))),
 advancedNormSim <- function(sim.sizes, means, vars) {
 
     stopifnot(all.equal(length(sim.sizes), length(means), length(vars)))
-    # your code here
+    n = length(sim.sizes)
+    simulations = 1:n 
+    
+    for (n in 1:n) {
+    simpleNorm = simpleNormSim(means[n], sim.sizes[n], vars[n])
+    simulations[n] = simpleNorm
+    }
+    
+    return(simulations)
 }   
 
 sizes.t <- c(25, 50, 25, 50)
