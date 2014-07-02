@@ -18,9 +18,32 @@ load('ex1-tests.rda')
 # second the upper bound
 
 outlierCutoff <- function(data) {
-    # your code here
+  
+    i = 0
+    n = ncol(data)
+    lowerBound = rep(NA, n)
+    upperBound = rep(NA, n)
+    names = colnames(data)
+    
+    for (i in 1:n) {
+      
+      coldata = data[,i]
+      median.col = median(coldata)
+      iqr.col = IQR(coldata) * 1.5
+      minOutlier = median.col - iqr.col
+      maxOutlier = median.col + iqr.col
+      lowerBound[i] = minOutlier
+      upperBound[i] = maxOutlier
+      i = i + 1
+      
+    }
+    
+    outlier.cutoffs = matrix(c(lowerBound, upperBound), nrow = 2, ncol = n, byrow = TRUE,)
+    colnames(outlier.cutoffs) = colnames(data)
+    return(outlier.cutoffs)
     
 }
+    
 
 tryCatch(checkIdentical(outlier.cutoff.t, outlierCutoff(ex1.test)),
          error=function(err) errMsg(err))
@@ -43,14 +66,50 @@ tryCatch(checkIdentical(outlier.cutoff.t, outlierCutoff(ex1.test)),
 #
 
 # <subset.data>: a data frame with numeric variables where observations with
-# unacceptably high rates of outliers (i.e. greater than <max.outliers>) have
+# unacceptably high rates of outliers (i.e. greater than <max.outlier.rates>) have
 # been removed.
 
 removeOutliers <- function(data, max.outlier.rate) {
 
     stopifnot(max.outlier.rate>=0 & max.outlier.rate<=1)
     
-    # your code here
+    cutoffs = outlierCutoff(data)
+    n = ncol(cutoffs)
+    #n = ncol(data)
+    #r = nrow(data)
+    TFmatrix = (data == TRUE)
+#     
+#     for (i in 1:r) {
+#       numMin = data[i,] < cutoffs[1,]
+#       numMax = data[i,] > cutoffs[2,]
+#       numOutliers = length(which(numMin == TRUE)) + length(which(numMax == TRUE))
+#       outlierrate = numOutliers / r
+#       if (outlierrate > max.outlier.rate) {
+#         data = data[-i,]
+#       }
+#       i = i + 1
+#     }
+
+    outVariables = ncol(data) * max.outlier.rate
+    
+    #for (n in 1:n) {
+#     lower = as.numeric(cutoffs[1,])
+#     higher = as.numeric(cutoffs[2,])
+#     TFmatrix = apply(data, 2, function(data) (data < lower | data > higher))
+
+
+  for (n in 1:n) {
+    lower = which(data[,n] < cutoffs[1,n])
+    higher = which(data[,n] > cutoffs[2,n])
+    
+    TFmatrix[lower,n] = TRUE
+    TFmatrix[higher,n] = TRUE
+  }
+    
+     rowstoremove = which(rowSums(TFmatrix == TRUE) > outVariables)
+     subset.data = data[-rowstoremove,]
+
+    return(subset.data)
 }
 
 tryCatch(checkIdentical(remove.outlier.t, removeOutliers(ex1.test, 0.25)),
