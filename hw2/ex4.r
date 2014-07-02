@@ -35,7 +35,34 @@ load('ex4-tests.rda')
 
 identifyDuplicates <- function(data) {
 
-    # your code here
+    colnum = ncol(data)
+    rownum = nrow(data)
+    
+    duplicate.pairs = matrix(data = NA, nrow = 0, ncol = 2)
+    
+    are.cols.identical <- function(col1, col2) identical(data[,col1], data[,col2])
+    
+    for (colnum in 1:colnum) {
+      
+      j = colnum 
+      
+      for (j in 1:j) {
+        
+        isIdentical = are.cols.identical(j, colnum)
+      
+        if (isIdentical == TRUE & colnum != j) {
+          duplicate.pairs = rbind(duplicate.pairs, c(j, colnum))
+        }
+      } 
+    }
+    
+    duplicate.pairs = duplicate.pairs[order(duplicate.pairs[,1]),] #sorts by first column value
+    
+    if (length(duplicate.pairs) == 0) {   
+      duplicate.pairs = vector(mode = "numeric", length = 0)                         
+    }
+    
+    return(duplicate.pairs)
 }
     
 tryCatch(checkEquals(numeric(0), identifyDuplicates(ex4.test1)),
