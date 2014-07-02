@@ -20,8 +20,25 @@ load('ex3-tests.rda')
 
 meanByLevel <- function(data) {
 
-    # your code here
-}
+    names = colnames(data)
+    numCol = ncol(data)
+    numVars = ncol(data) - 1
+    meandata = 1:j
+    factornames = names(table(data[numCol]))
+    i = length(factornames)
+    level.means = vector("list", i)
+    
+    for (i in 1:i) {
+      rows = which(data[lastCol] == factornames[i])
+      newdata = data[rows,-numCol]
+      level.means[[i]] = colMeans(newdata)
+    }
+    
+    level.means = do.call(rbind, level.means)
+    rownames(level.means) = factornames
+    return(level.means)
+}  
+
 
 tryCatch(checkIdentical(mean.by.level.t, meanByLevel(iris)), error=function(err)
          errMsg(err))
@@ -48,7 +65,38 @@ tryCatch(checkIdentical(mean.by.level.t, meanByLevel(iris)), error=function(err)
 
 stdLevelDiff <- function(data) {
 
-    # your code here
+    meanMatrix = meanByLevel(data)
+    cols = colnames(meanMatrix)
+    lengthCol = length(cols)
+    
+    factornames = names(table(data[lengthCol + 1]))
+    j = length(factornames)
+    
+    sepdata = c(data[cols[1:lengthCol]])
+    overallMeans = sapply(sepdata, mean)
+    overallSD = sapply(sepdata, sd)
+    
+    indivMeans = vector("list", j)
+    
+    for (j in 1:j) {
+      n = which(data[lengthCol + 1] == factornames[j])
+      sepdata = c(data[n,cols[1:lengthCol]])
+      factorMeans = sapply(sepdata,mean)
+      indivMeans[[j]] = factorMeans
+    }
+    
+    for (j in 1:j) {
+      varName = factornames[j]
+      DFC = (as.numeric(indivMeans[[j]]) - overallMeans) / (overallSD)
+      if (j == 1)
+      level.diff = rbind(DFC)
+      else
+      level.diff = rbind(level.diff, DFC)
+    }
+    
+    rownames(level.diff) = factornames
+    level.diff = abs(level.diff)
+    return(level.diff)
 }
 
 tryCatch(checkIdentical(std.level.diff.t, abs(stdLevelDiff(iris))),
