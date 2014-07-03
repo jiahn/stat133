@@ -20,13 +20,13 @@ babies.data <- read.csv('babies.csv')
 
 plotWeightGroups <- function(data, weight.boundary, ...) {
 
-    # your code here
     idcs <- data$weight <= weight.boundary
     group1 <- data[idcs, ]
     group2 <- data[!idcs, ]
 
     plot(density(group1$bwt), ...)
     lines(density(group2$bwt), col='red')
+    
 }
 
 # Suppose that you are interested in performing a t-test to determine
@@ -49,7 +49,6 @@ plotWeightGroups <- function(data, weight.boundary, ...) {
 
 tTestWeight <- function(data, weight.boundary) {
 
-        # your code here
         idcs <- data$weight <= weight.boundary
         group1 <- data[idcs, ]
         group2 <- data[!idcs, ]
@@ -57,6 +56,7 @@ tTestWeight <- function(data, weight.boundary) {
         test <-  t.test(group1$bwt, group2$bwt, alternative='less')
         t.output <- list(t.stat=test$statistic, p.val=test$p.value)
         return(t.output)
+        
 }
 
 
@@ -87,7 +87,6 @@ tTestWeight <- function(data, weight.boundary) {
 
 plotStratified <- function(data, weight.boundary, ...) {
 
-    # your code here
     heavy.idcs <- data$weight > weight.boundary
 
     par(mfrow=c(2, 1))
@@ -96,6 +95,7 @@ plotStratified <- function(data, weight.boundary, ...) {
                 lines(density(group$bwt[group$smoke==1]), col='red')
             })
     return(NULL)
+    
 }
 
 # Implement the function "stratifiedTest" to perform a t-test on each of
@@ -118,7 +118,6 @@ plotStratified <- function(data, weight.boundary, ...) {
 
 stratifiedTest <- function(data, weight.boundary) {
 
-        # your code here
         heavy.idcs <- data$weight > weight.boundary
 
         t.outputs <- by(data[, c('bwt', 'smoke')], heavy.idcs, function(group) {
@@ -129,6 +128,7 @@ stratifiedTest <- function(data, weight.boundary) {
                         })
         
         return(t.outputs)
+        
 }
 
                         
