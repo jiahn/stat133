@@ -36,11 +36,38 @@ load('lab3-tests.rda')
 #   (black) and smokers (red). Do not worry about any other parameters for
 #   the plot.
 
-stratifiedTest <- function(data, group.variable, group.cutoff) {
+stratifiedTest <- function(data, group.variable, group.cutoff, test.alternative = c("less")) {
 
     stopifnot(group.variable %in% names(data)[2:6]) 
 
-    # your code here
+    smokers = which(data$smoke == 1)
+    nonsmokers = which(data$smoke == 0)
+    
+    smoker.data = data[[group.variable]][smokers]
+    nonsmoker.data = data[[group.variable]][nonsmokers]
+    
+    smokelowerbound = data$bwt[which(smoker.data <= group.cutoff)]
+    nosmokelowerbound = data$bwt[which(nonsmoker.data <= group.cutoff)]
+    
+    smokehighbound = data$bwt[which(smoker.data > group.cutoff)]
+    nosmokehighbound = data$bwt[which(nonsmoker.data > group.cutoff)]
+    
+    lowertest = t.test(smokelowerbound, nosmokelowerbound, alternative = test.alternative)
+    highertest = t.test(smokehighbound, nosmokehighbound, alternative = test.alternative)
+    
+    #smokertest = t.test(smokelowerbound, smokehighbound, alternative = test.alternative)
+    #nosmokertest = t.test(nosmokelowerbound, nosmokehighbound, alternative = test.alternative)
+
+    lowlist = c(lowertest$statistic, lowertest$p.value)
+    highlist = c(highertest$statistic, highertest$p.value)
+
+    t.outputs = list(lowlist, highlist)
+    
+    plot(density(data$bwt[smokers]), col = c("red"))
+    lines((density(data$bwt[nonsmokers])), col = c("black"))
+    
+    return(t.outputs)
+    
 }
 
 output.t1 <- stratifiedTest(babies.data, "height", 64)
