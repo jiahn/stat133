@@ -2,7 +2,39 @@
     "email": "ji.ahn@berkeley.edu", 
     "github_name": "jiahn", 
     "grades": {
-        "assignment-1": {
+        "hw1": {
+            "earned": 27, 
+            "hash": "4506457b5778bfacb30588118c9facd138e8eadd", 
+            "note": "", 
+            "parts": {
+                "ex1": {
+                    "earned": 6, 
+                    "possible": 6
+                }, 
+                "ex2": {
+                    "earned": 6, 
+                    "possible": 8
+                }, 
+                "ex3": {
+                    "earned": 7, 
+                    "possible": 8
+                }, 
+                "ex4": {
+                    "earned": 8, 
+                    "possible": 8
+                }
+            }, 
+            "penalty": 0, 
+            "possible": 30
+        }, 
+        "lab0": {
+            "earned": 10, 
+            "hash": "4d671ee792e814655123587f6d0b0c2288e3b3e1", 
+            "note": "", 
+            "penalty": 0, 
+            "possible": 10
+        }, 
+        "lab1": {
             "earned": 28, 
             "hash": "50e71bd13b39bcc6ce4b4688670250ed337b0f73", 
             "note": "", 
@@ -10,11 +42,21 @@
             "possible": 30
         }, 
         "lab2": {
-            "earned": 10, 
-            "hash": "4d671ee792e814655123587f6d0b0c2288e3b3e1", 
+            "earned": 18, 
+            "hash": "4506457b5778bfacb30588118c9facd138e8eadd", 
             "note": "", 
+            "parts": {
+                "lab2": {
+                    "earned": 10, 
+                    "possible": 22
+                }, 
+                "lab2-figures": {
+                    "earned": 8, 
+                    "possible": 8
+                }
+            }, 
             "penalty": 0, 
-            "possible": 10
+            "possible": 30
         }
     }, 
     "login": "jiahn", 
