@@ -2,22 +2,27 @@ library(RUnit)
 errMsg <- function(err) print(err)
 load('ex3-tests.rda')
 
-# Implement the function "sumNA". Your function should take the following
-# arguments:
-#
-# <data.matrix>: a numeric matrix of any dimensions, possibly containing NA
-#   values
-#
-# Your function should return the following:
-#
-# <numNAs>: a list containing 3 elements. The first should be a numeric
-# vector giving the number of NA values in each row, the second a numeric
-# vector giving the numeber of NA values in each column, and the third a
-# numeric giving the total number of NA values in the matrix.
+#done
 
 sumNA <- function(data.matrix) {
-
-    # your code here **
+    
+    i = nrow(data.matrix)
+    j = ncol(data.matrix)
+    rows = c()
+    cols = c()
+    
+    for (i in 1:i) {
+      rowsum = sum(is.na(data.matrix[i,]))
+      rows = c(rows, rowsum)
+    }
+    
+    for (j in 1:j) {
+      rowsum = sum(is.na(data.matrix[,j]))
+      cols = c(cols, rowsum)
+    }
+    
+    numNAs = list(rows, cols, sum(is.na(data.matrix)))
+    return(numNAs)
 }
 
 tryCatch(checkEquals(sum.na.t, sumNA(ex3.test1)), error=function(err)
@@ -41,7 +46,14 @@ tryCatch(checkEquals(sum.na.t, sumNA(ex3.test1)), error=function(err)
 
 simulateNormals <- function(n, sim.mean=0, sim.var=1, k=10) {
 
-    # your code here *
+    simulations = matrix(nrow = n, ncol = k)
+    sd = sqrt(sim.var)
+    
+    for (k in 1:k) {
+      simulations[,k] = rnorm(n, sim.mean, sd)
+    }
+
+    return (simulations)
 }
 
 set.seed(47)
@@ -62,6 +74,9 @@ tryCatch(checkEquals(simulate.normals.t, simulateNormals(100, 5, 4, 5)),
 listLengths <- function(data.list) {
 
     # your code here *
+    element.lengths = lapply(data.list, function(x) length(x))
+    element.lengths = unlist(element.lengths)
+    return(element.lengths)
 }
 
 tryCatch(checkEquals(list.lengths.t, listLengths(ex3.test2)),
@@ -81,7 +96,13 @@ tryCatch(checkEquals(list.lengths.t, listLengths(ex3.test2)),
 
 matrixListMeans <- function(matrix.list) {
 
-    # your code here *
+    r = dim(matrix.list[[1]])
+    c = length(matrix.list)
+    
+    means = lapply(matrix.list, function(x) rowMeans(x))
+    matrix.list = matrix(unlist(means), ncol = c, byrow = FALSE)
+    return(matrix.list)
+    
 }
 
 tryCatch(checkEquals(matrix.list.means.t, matrixListMeans(ex3.test3)),
@@ -106,7 +127,22 @@ tryCatch(checkEquals(matrix.list.means.t, matrixListMeans(ex3.test3)),
 
 standMatrixVariables <- function(data.matrix) {
 
-    # your code here ***
+    n = ncol(data.matrix)
+    r = ncol(data.matrix)
+    emptymatrix = matrix(nrow = n, ncol = n)
+    
+    value = function(i, j) {
+      (mean(data.matrix[,i]) - mean(data.matrix[,j])) / (sd(c(data.matrix[,i], data.matrix[,j])))
+    }
+    
+    for (n in 1:n) {
+      for (r in 1:r) {
+      emptymatrix[n,r] = value(r,n)
+      }
+    }
+    
+    standardized.matrix = emptymatrix
+    return(standardized.matrix)
 }
 
 tryCatch(checkEquals(stand.matrix.variables.t,
