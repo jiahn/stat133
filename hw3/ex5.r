@@ -2,21 +2,15 @@ library(RUnit)
 errMsg <- function(err) print(err)
 load('ex5-tests.rda')
 
-# Implement the function "firstLast". Your function should take the
-# following arguments:
-#
-# <data>: any dataframe
-#
-# Your function should return the following:
-#
-# <first.last>: a dataframe with dimensions 10 x num.cols (where num.cols is
-#   the number of columns from the data frame). The first five rows of this
-#   matrix should be the first five rows of <data> while the last
-#   five should be the final 5 rows of <data>
+#done
 
 firstLast <- function(data) {
 
-    # your code here *
+    first = head(data, 5)
+    last = tail(data, 5)
+    first.last = rbind(first, last)
+    return(first.last)
+    
 }
 
 tryCatch(checkEquals(first.last.t, firstLast(iris)), error=function(err)
@@ -35,7 +29,8 @@ tryCatch(checkEquals(first.last.t, firstLast(iris)), error=function(err)
 
 npRatio <- function(data) {
 
-    # your code here *
+    np.ratio = ncol(data) / nrow(data)
+    return(np.ratio)
 }
 
 tryCatch(checkEquals(np.ratio.t, npRatio(iris)), error=function(err)
@@ -54,7 +49,11 @@ tryCatch(checkEquals(np.ratio.t, npRatio(iris)), error=function(err)
 
 numericSummary <- function(data) {
 
-    # your code here **
+   numerics = sapply(data, is.numeric)
+   data = data[,numerics]
+   numeric.summary = unname(apply(data, 2, summary))
+   return(numeric.summary)
+   
 }
 
 tryCatch(checkEquals(numeric.summary.t, unname(numericSummary(ex5.test1))),
@@ -72,7 +71,8 @@ tryCatch(checkEquals(numeric.summary.t, unname(numericSummary(ex5.test1))),
 
 getClass <- function(data) {
 
-    # your code here *
+    var.classes = unname(sapply(data, function(x) class(x)))
+    return(var.classes)
 }
 
 tryCatch(checkEquals(get.class.t, unname(getClass(ex5.test1))), error=function(err)
