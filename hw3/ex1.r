@@ -2,22 +2,20 @@ library(RUnit)
 errMsg <- function(err) print(err)
 load('ex1-tests.rda')
 
-# Implement the function "returnFalse". Your function should take the
-# following arguments:
-#
-# <data.vector>: some vector of observations of any typeg
-# <logical.vector>: a logical vector whose length is equal to
-#   <data.vector>
-#   
-#
-# Your function should return:
-#
-# <false.oservations>: all observations in data.vector for which
-#   <logical.vector> is false
+#done
 
 returnFalse <- function(data.vector, logical.vector) {
 
-    # your code here *
+  i = length(logical.vector)
+  false.observations = c()
+  
+  for (i in 1:i) {
+    if ( logical.vector[i] == FALSE ) {
+      false.observations = c(false.observations, data.vector[i])
+    }
+  }
+  
+  return (false.observations)
 }
 
 tryCatch(checkEquals(return.false.t, returnFalse(ex1.test1.data,
@@ -38,7 +36,17 @@ tryCatch(checkEquals(return.false.t, returnFalse(ex1.test1.data,
 
 returnNonIdcs <- function(data.vector, idcs) {
 
-    # your code here *
+    i = length(idcs)
+    remove.vals = c()
+    
+    for (i in 1:i) {
+      idcs.index = idcs[i]
+      remove.vals = c(remove.vals, idcs.index)
+    }
+    
+    non.idcs.observations = data.vector[-remove.vals]
+    
+    return (non.idcs.observations)
 }
 
 tryCatch(checkEquals(return.non.idcs.t, returnNonIdcs(ex1.test1.data,
@@ -62,7 +70,10 @@ tryCatch(checkEquals(return.non.idcs.t, returnNonIdcs(ex1.test1.data,
 
 subsetDfIdcs <- function(data, observation.idcs, variable.idcs) {
 
-    # your code here *
+    subsetDfIdcs = data[observation.idcs,]
+    subsetDfIdcs = subsetDfIdcs[,variable.idcs]
+    data.subset = subsetDfIdcs
+    return(data.subset)
 }
 
 tryCatch(checkEquals(subset.df.idcs.t, subsetDfIdcs(iris, 1:100, 1:3)),
@@ -86,7 +97,20 @@ tryCatch(checkEquals(subset.df.idcs.t, subsetDfIdcs(iris, 1:100, 1:3)),
 
 subsetDfName <- function(data, non.observations, non.names) {
 
-    # your code here **
+    i = length(non.names)  
+    data = data[-non.observations,]
+    colsToRmv = c()
+    
+    for (i in 1:i) {
+      rmvCol = non.names[i]
+      colnum = which(colnames(data) == rmvCol)
+      colsToRmv = c(colsToRmv, colnum)
+    }
+    
+    data.subset = data[,-colsToRmv]
+    
+    return(data.subset)
+    
 }
 
 tryCatch(checkEquals(subset.df.name.t, subsetDfName(iris, 1:50, "Species")),
