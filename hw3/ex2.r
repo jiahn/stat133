@@ -15,7 +15,10 @@ load('ex2-tests.rda')
 
 colSorter <- function(data.matrix) {
 
-    # your code here **
+    sorted.matrix = data.matrix[order(data.matrix[,1],data.matrix[,2]),]  
+  
+    return(sorted.matrix)
+    
 }
 
 tryCatch(checkEquals(col.sorter.t, colSorter(ex2.test1)),
@@ -36,7 +39,14 @@ tryCatch(checkEquals(col.sorter.t, colSorter(ex2.test1)),
 
 rowSorter <- function(data.matrix) {
 
-    # your code here **
+    i = nrow(data.matrix)
+    for (i in 1:i) {
+      newrow = sort(data.matrix[i,], decreasing = TRUE)
+      data.matrix[i,] = newrow
+    }
+    
+    sorted.matrix = data.matrix
+    return(sorted.matrix)
 }
 
 tryCatch(checkEquals(row.sorter.t, rowSorter(ex2.test2)),
@@ -60,7 +70,26 @@ tryCatch(checkEquals(row.sorter.t, rowSorter(ex2.test2)),
 
 factorSorter <- function(data, sort.name) {
 
-    # your code here ***
+    colvals = data[[sort.name]]
+    
+    names = colnames(data)
+    factor = sapply(names, function(var) {class(data[[var]]) == "factor"})
+    factorname = names(which(factor == TRUE))
+    factorcol = unname(which(factor == TRUE))
+    varcol = which(names == sort.name)
+    factor.variable = data[[factorname]]
+    levelnames = levels(factor.variable)
+    #data = data[order(colvals),]
+    #with(data, data[order(Species, Sepal.Length),])
+    
+    data.sort = function(facname) {
+        newdat = data[order(data[,sort.name],data[which(data[[factorname]] == facname),factorcol]),]
+    }
+    
+    
+    sorted.factors = by(data, factor.variable, function(x) data[order(data[,varcol],data[,factorcol]),])
+    #sorted.factors = by(data, factor.variable, function(x) data.sort(x))
+    return (sorted.factors)
 }
 
 tryCatch(checkEquals(factor.sorter.t, factorSorter(iris, 'Sepal.Length')),
