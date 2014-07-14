@@ -27,6 +27,31 @@
             "penalty": 0, 
             "possible": 30
         }, 
+        "hw2": {
+            "earned": 22, 
+            "hash": "f5c74a3c93ef61e0eaf686db3548f21b01bd84a8", 
+            "note": "", 
+            "parts": {
+                "ex1": {
+                    "earned": 6, 
+                    "possible": 6
+                }, 
+                "ex2": {
+                    "earned": 8, 
+                    "possible": 8
+                }, 
+                "ex3": {
+                    "earned": 0, 
+                    "possible": 8
+                }, 
+                "ex4": {
+                    "earned": 8, 
+                    "possible": 8
+                }
+            }, 
+            "penalty": 0, 
+            "possible": 30
+        }, 
         "lab0": {
             "earned": 10, 
             "hash": "4d671ee792e814655123587f6d0b0c2288e3b3e1", 
@@ -38,6 +63,12 @@
             "earned": 28, 
             "hash": "50e71bd13b39bcc6ce4b4688670250ed337b0f73", 
             "note": "", 
+            "parts": {
+                "assignment-1": {
+                    "earned": 28, 
+                    "possible": 30
+                }
+            }, 
             "penalty": 0, 
             "possible": 30
         }, 
@@ -52,6 +83,23 @@
                 }, 
                 "lab2-figures": {
                     "earned": 8, 
+                    "possible": 8
+                }
+            }, 
+            "penalty": 0, 
+            "possible": 30
+        }, 
+        "lab3": {
+            "earned": 12, 
+            "hash": "ce0338e1bf0b401bdf478d440c6340dd2dd9fb2f", 
+            "note": "", 
+            "parts": {
+                "lab3": {
+                    "earned": 8, 
+                    "possible": 22
+                }, 
+                "lab3-figures": {
+                    "earned": 4, 
                     "possible": 8
                 }
             }, 
