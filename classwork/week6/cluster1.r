@@ -18,7 +18,9 @@ group = rbind(healthy.subjects, sick.subjects)
 ## Exercise
 #
 # 1. Perform a principal components analysis on group.
-#
+
+pcaResult = princomp(group)
+
 # 2. Write a helper function called plotPCA that takes
 # a data matrix with 2 columns and plots the first column
 # against the second.  You should assume that the columns are
@@ -27,11 +29,25 @@ group = rbind(healthy.subjects, sick.subjects)
 # Your helper function should also label the plot
 # "Simulated  MVG (n= 200, p=30)" and put a legend in the
 # top right corner.
-#
+
+plotPCA = function(data) {
+  
+  #pcaResult = prcomp(data)
+  plot(data, col = c('black', 'red'), main = "Simulated  MVG (n= 200, p=30)")
+  legend("topright", "Black = Sick, Red = Healthy")
+  
+}
+
 # 3. Produce four figures in one window by calling your
 # helper function on the:
 #   a. 1st vs 2nd PC
-#   b. 2nd vs 3rd PC 
-#   b. 1st vs 3rd PC 
-#   b. 3rd vs 4th PC 
+plotPCA(pcaResult$x[,1:2])
 
+#   b. 2nd vs 3rd PC 
+plotPCA(pcaResult$x[,2:3])
+
+#   c. 1st vs 3rd PC 
+plotPCA(pcaResult$x[,1:3])
+
+#   d. 3rd vs 4th PC 
+plotPCA(pcaResult$x[,3:4])
