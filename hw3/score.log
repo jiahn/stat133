@@ -1,0 +1,91 @@
+INFO:root:Executed R('load(\'hw2/ex1-tests.rda\')')
+ERROR:root:(1 points) Checking R('all.equal(return.false.t, returnFalse(ex1.test1.data, ex1.test1.bool))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(return.non.idcs.t, returnNonIdcs(ex1.test1.data, ex1.test1.idcs))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(subset.df.idcs.t, subsetDfIdcs(iris, 1:100, 1:3))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+ERROR:root:(1 points) Checking R('all.equal(subset.df.name.t, subsetDfName(iris, 1:50, \'Species\'))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+INFO:root:Executed R('load(\'hw3/ex2-tests.rda\')')
+ERROR:root:(1 points) Checking R('all.equal(col.sorter.t, colSorter(ex2.test1))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(row.sorter.t, rowSorter(ex2.test2))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(2 points) Checking R('all.equal(factor.sorter.t, factorSorter(iris, \'Sepal.Length\'))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+INFO:root:Executed R('load(\'hw3/ex3-tests.rda\')')
+ERROR:root:(1 points) Checking R('all.equal(sum.na.t, sumNA(ex3.test1))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+INFO:root:Executed R('set.seed(47)')
+ERROR:root:(1 points) Checking R('all.equal(simulate.normals.t, simulateNormals(100, 5, 4, 5))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(list.lengths.t, listLengths(ex3.test2))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(matrix.list.means.t, matrixListMeans(ex3.test3))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(stand.matrix.variables.t, standMatrixVariables(ex3.test4))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+INFO:root:Executed R('load(\'hw2/ex4-tests.rda\')')
+ERROR:root:(1 points) Checking R('all.equal(test.groups.gestation.t, testGroupsGestation(test.data, g1, g2, test.alternative=\'greater\'))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+ERROR:root:(1 points) Checking Are there two sets of plots?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the first plot a density plot?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the x-axis labeled 'age'?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the range of the x-axis 20 to 100?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the plot titled 'Patient age by group'?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the two groups colored correctly?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Does the second figure have 4 subplots?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the subplots titled correctly?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the x- and y-axis ranged appropriately?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the y-axis correctly labeled?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the groups colored correctly?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+INFO:root:Executed R('load(\'hw3/ex5-tests.rda\')')
+ERROR:root:(1 points) Checking R('all.equal(first.last.t, firstLast(iris))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: list, NULL
+ERROR:root:(1 points) Checking R('all.equal(np.ratio.t, npRatio(iris))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(2 points) Checking R('all.equal(numeric.summary.t, unname(numericSummary(ex5.test1)))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, NULL
+ERROR:root:(1 points) Checking R('all.equal(get.class.t, unname(getClass(ex5.test1)))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: character, NULL
+INFO:root:You got a 0 out of 30.
