@@ -18,11 +18,16 @@ load('ex1-tests.rda')
 
 dataDist <- function(data, norm='euclidean') {
 
-    # your code here
+    factor_cols = vapply(data, is.factor, logical(1))
+    removecol = which(factor_cols == TRUE)
+    
+  
+    matrix = dist(data[,-removecol], method = norm)
+    return(matrix)
 
 }
 
-tryCatch(checkEquals(data.dist.t, dataDist(iris)), error=function(err)
+tryCatch(checkEquals(c(data.dist.t), c(dataDist(iris))), error=function(err)
          errMsg(err))
 
 
@@ -44,7 +49,9 @@ tryCatch(checkEquals(data.dist.t, dataDist(iris)), error=function(err)
 
 clustLabel <- function(data, norm='euclidean', k) {
 
-    # your code here
+    dist = dataDist(data, norm)
+    labelvec = cutree(hclust(dist), k= 3)
+    return(labelvec)
 
 }
 
@@ -74,8 +81,29 @@ tryCatch(checkEquals(clust.label.t, clustLabel(iris, k=3)),
 
 evalClusters <- function(data, true.labels, norm='euclidean', k) {
 
-    # your code here
+    #dist = dataDist(data, norm)
+    labels = clustLabel(data, norm, k)
+    index = length(labels) / k
+    evalclust = c()
+    
+    for (k in 1:k) {
+    
+    
+    frequent = which.max(table(true.labels[((index*(k-1))+1):(index*k)]))
+    value = length(which(labels == frequent))
+    
+    percentage = 1 - (length(which(labels[((index*(k-1))+1):(index*k)] == frequent)) / value)
+    
+    if (percentage == 0){
+      evalclust[k] = 1
+    }
+    else
+      
+    evalclust[k] = percentage
 
+    }
+    
+    return(evalclust)
 }
 
 tryCatch(checkEquals(eval.clusters.t, evalClusters(iris, iris$Species, k=3)),
@@ -101,7 +129,13 @@ tryCatch(checkEquals(eval.clusters.t, evalClusters(iris, iris$Species, k=3)),
 
 heightCluster <- function(data, norm='euclidean', h, ...) {
     
-    # your code here
+  dist = dataDist(data, norm)
+  labelvec = cutree(hclust(dist), k= 3, h = h)
+  
+  plot(hclust(dist))
+  abline(h = h, col = 'red')
+  
+  return(labelvec)
 
 }
 
