@@ -15,8 +15,8 @@ load('ex1-tests.rda')
 
 sigComponents <- function(pca, var.level) {
 
-    # your code here
-
+    value = length(which((pca$sdev)^2 > var.level))
+    return (value)
     
 }
 
@@ -36,7 +36,9 @@ tryCatch(checkEquals(2, sigComponents(iris.pca, 0.9)), error=function(err)
 
 varProportion <- function(pca) {
 
-    # your code here
+    variances = pca$sdev^2
+    vars = variances/sum(variances)
+    return(cumsum(vars))
 
 }
 
@@ -64,8 +66,21 @@ tryCatch(checkEquals(var.proportion.t, varProportion(iris.pca)),
 # should return integer(0)***
 
 reduceData <- function(data, var.level, scale=T, center=T) {
-
-    # your code here
+    
+    #faccol = which(sapply(data, is.numeric) == FALSE) - finds non-num cols
+    #data = data[,-faccol] - only if data has non-numeric columns
+    
+    data.pca = prcomp(data, center = center, scale. = scale)
+    value = (which((data.pca$sdev)^2 > var.level))
+    
+    if (length(value) == 0) {
+      return (integer(0))
+    }
+    else
+    
+    reducedData = data.pca$x[,c(value)]
+    
+    return(reducedData)
 
 }
 
@@ -84,18 +99,31 @@ tryCatch(checkEquals(reduce.data.t, reduceData(iris.data, 0.9)),
 # Use your previously defined functions along with R's built in functions
 # to do the following:
 # 1) load the wines.csv dataset
+
+wines = read.csv("~/GitHub/stat133/src/hw5/wines.csv")
+
 # 2) run a principal component analysis. Use the output to transform your
 #   data, and reduce the dimension to include only the PCs whose associated
 #   variance exceeds 1 (this should reduce the data to 3 variables). Call
 #   this reduced dataset <wine.reduced>.
+
+wine.reduced = reduceData(wines, var.level = 1, scale=T, center=T)
+
 # 3) run k-means clustering on your reduced data with k=3 and
 #   max.iters=10. ***Make sure to set your seed to 47 before doing
 #   this***. Store the resulting cluster labels from k-means as the
 #   variable <cluster.labels.k>
+
+set.seed(47)
+kmdata = kmeans(wine.reduced, centers = 3, iter.max = 10)
+cluster.labels.k = kmdata$cluster
+
 # 4) run hierarchical clustering on your reduced data. Plot the resulting
 #   dendrogram. Cut the tree so that you have 3 clusters and store the
 #   resulting cluster labels as the variable <cluster.labels.h>
 
+wineDist = dist(wine.reduced, method = 'euclidean')
+cluster.labels.h = cutree(hclust(wineDist), k=3)
 
 # wine.reduced <- your code here
 
