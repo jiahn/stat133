@@ -139,7 +139,7 @@ cluster.labels.h = cutree(hclust(wineDist), k=3)
 #
 # <data>: a numeric matrix or dataframe whose observations belong to
 #   certain clusters
-# <varibles>: a length 2 numeric vector indicating the two variables of
+# <variables>: a length 2 numeric vector indicating the two variables of
 #   <data> that should be plotted against one another
 # <cluster.labels>: a numeric vector, whose length is equal to the number of
 #   rows of data, giving the cluster label for each observation
@@ -150,6 +150,7 @@ cluster.labels.h = cutree(hclust(wineDist), k=3)
 # "Set1" palette in RColorBrewer (you may assume that the number of
 # clusters is less than the total number of colors in this
 # palette).
+
 #***Your function will need to check that the conditions on the length of
 #<variables> and <cluster.labels> hold. If they do not, your function
 #should run the command "stop", printing the error messages:
@@ -157,8 +158,23 @@ cluster.labels.h = cutree(hclust(wineDist), k=3)
 
 
 plotClusters <- function(data, variables, cluster.labels, ...) {
+  
+  if (length(variables) > 2) {
+    stop("len variables > 2")
+  }
+  else
     
-    # your code here
+    if (length(cluster.labels) != nrow(data) ) {
+      stop("incompatible dimensions")
+    }
+  
+  else
+    
+  k = nrow(data)
+  limit = length(variables)
+  data = data[,variables[1]:limit]
+  cols = kmeans(data, length(variables))
+  plot(data, col = cols$cluster)
 
 }
 
@@ -179,4 +195,17 @@ tryCatch(checkException(plotClusters(iris.data, 1:3, 1:nrow(iris.data)),
 # variables but color the points by the hierarchical clustering labels and
 # the true labels (from col 1 of wines.csv) respectively. Change the titles
 # of each of these rows accordingly but keep the pch as 20.
+
+i = 3
+par(mfrow = c(3,3))
+plotClusters(wine.reduced, c(1,2), 1:nrow(wine.reduced), main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(2,3), 1:nrow(wine.reduced), main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(1,3), 1:nrow(wine.reduced), main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(1,2), 1:nrow(wine.reduced), col = wines[,1], main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(2,3), 1:nrow(wine.reduced), col = wines[,1], main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(1,3), 1:nrow(wine.reduced), col = wines[,1], main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(1,2), 1:nrow(wine.reduced), col = cluster.labels.h, main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(2,3), 1:nrow(wine.reduced), col = cluster.labels.h, main = "k-means", pch = 20)
+plotClusters(wine.reduced, c(1,3), 1:nrow(wine.reduced), col = cluster.labels.h, main = "k-means", pch = 20)
+
 
