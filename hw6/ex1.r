@@ -36,7 +36,13 @@ load('hw6-tests.rda')
 
 tpr <- function(threshold, predicted, truth) {
 
-    # your code here
+    r.truths = (truth == 1)
+    p.truths = (predicted > threshold)
+    match.truths = which(r.truths == TRUE & p.truths == TRUE)
+    tpr.val = length(match.truths) / length(which(r.truths == TRUE))
+    
+    return (tpr.val)
+    
 }
 
 tryCatch(checkEquals(hw6$tpr.t1, tpr(0.5, hw6$tpr.pr, hw6$tpr.tr)),
@@ -60,7 +66,13 @@ tryCatch(checkEquals(hw6$tpr.t1, tpr(0.5, hw6$tpr.pr, hw6$tpr.tr)),
 
 fpr <- function(threshold, predicted, truth) {
 
-    # your code here
+    r.truths = (truth == 1)
+    p.truths = (predicted > threshold)
+    match.truths = which(r.truths == FALSE & p.truths == TRUE)
+    fpr.val = length(match.truths) / length(which(r.truths == FALSE))
+  
+    return (fpr.val)
+  
 }
 
 tryCatch(checkEquals(hw6$fpr.t1, fpr(0.5, hw6$tpr.pr, hw6$tpr.tr)),
@@ -85,13 +97,41 @@ tryCatch(checkEquals(hw6$fpr.t1, fpr(0.5, hw6$tpr.pr, hw6$tpr.tr)),
 # axes should range from 0 to 1 and be labeled fpr and tpr respectively.
 #
 # If add is true, your function should add the ROC curve to an existing
-# plot. Your function should also return a list with two elements:
+# plot. 
+# Your function should also return a list with two elements:
 # tprs = the true positive rates over your threshold grid
 # fprs = the false positive rates over your threshold grid
 
 plotROC <- function(predicted, truth, add=F, ...) {
 
-    # your code here
+    thresh.grid = seq(0.00, 1.00, 0.01)
+    i = length(thresh.grid)
+    fprs = c()
+    tprs = c()
+    
+    for (i in 1:i) {
+      fpr.v = fpr(thresh.grid[i], predicted, truth)
+      fprs = c(fprs, fpr.v)
+    }
+    
+    
+    for (i in 1:i) {
+      tpr.v = tpr(thresh.grid[i], predicted, truth)
+      tprs = c(tprs, tpr.v)
+    }
+    
+    tpr.fpr.list = list(tprs, fprs)
+    names(tpr.fpr.list) = c("tprs", "fprs")
+    
+    if(add == FALSE) {
+      plot(tprs, fprs, xlab = "tpr", ylab = "fpr")
+      return(tpr.fpr.list)
+    }
+    else
+      lines(tprs, fprs, xlab = "tpr", ylab = "fpr")
+      return(tpr.fpr.list)
+      
+    
 }
 
 tryCatch(checkEquals(hw6$plotROC.t1, plotROC(hw6$tpr.pr, hw6$tpr.tr)),
@@ -111,7 +151,6 @@ library(randomForest)
 spam <- list()
 spam$data <- read.csv('spam-data.csv', header=F)
 
-
 # Before running a classifier, please split your data into training and test
 # sets. To do this, randomly sample 3,500 observtions from your dataset using
 # R's sample function. Store this as an element named "train" in the list
@@ -119,6 +158,7 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # "spam".
 # ***Make sure to set your seed to 47 before sampling***
 
+--
 
 # fit a recursive partitioning classifier and a random forest classifier to your
 # training data. Use these to predict the probability that each observation is a
@@ -129,6 +169,7 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # parameters.  *** Make sure to set your seed to 47 before fitting your
 # models***
 
+--
 
 # Evaluate your two models using your plotROC function. Store the outputs as
 # <rp.output> and <rf.output> respectively. Please plot the ROC curves in the
@@ -137,6 +178,8 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # wrote your plotROC function.
 # Add a legend in the bottom right indicating the the model that each curve represents.
 
+--
+  
 # In the spam scenario, a true positive represents classifying spam email correctly
 # while a false positive represents classifying a good email as spam. For each
 # of the models, what is the lowest we can make fpr while still catching all
@@ -176,3 +219,4 @@ tryCatch(checkEquals(hw6$constrainedFPR.t1, constrainedFPR(hw6$plotROC.t1$tprs,
 # <min.fpr.rf>? Use the same grid of probabilities as in your plotROC function
 # and store these values as <rp.threshold>.
 
+--
