@@ -1,0 +1,612 @@
+INFO:root:Executed R('load(\'../instructor/midterm/ex1.rda\')')
+ERROR:root:(1 points) Checking R('fm$bmi == fbmi')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'fbmi' not found
+
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'fbmi' not found
+
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'fbmi' not found
+
+ERROR:root:(1 points) Checking R('fm$overWt == foverWt')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'foverWt' not found
+
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'foverWt' not found
+
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in eval(expr, envir, enclos) : object 'foverWt' not found
+
+ERROR:root:(1 points) Checking R('fm == family')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in `==.default`(left, right) : 
+  comparison (1) is possible only for atomic and list types
+
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in `==.default`(left, right) : 
+  comparison (1) is possible only for atomic and list types
+
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/__init__.py", line 240, in __call__
+    res = self.eval(p)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 86, in __call__
+    return super(SignatureTranslatedFunction, self).__call__(*args, **kwargs)
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/functions.py", line 35, in __call__
+    res = super(Function, self).__call__(*new_args, **new_kwargs)
+RRuntimeError: Error in `==.default`(left, right) : 
+  comparison (1) is possible only for atomic and list types
+
+ERROR:root:(1 points) Checking Are all the circles plotted correctly?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the circles correctly colored?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are xlim and ylim set correctly?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Is the legend in the topright corner?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+ERROR:root:(1 points) Checking Are the circles and labels in the legend correct?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+INFO:root:Executed R('d0 = data.frame(a=rnorm(2))')
+INFO:root:Executed R('d1 = data.frame(a=rnorm(2), b=as.factor(1:2))')
+INFO:root:Executed R('d2 = data.frame(a=as.factor(1:2), b=as.factor(1:2))')
+ERROR:root:(1 points) Checking R('0 == num.factors(d0)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('1 == num.factors(d1)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('2 == num.factors(d2)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+INFO:root:Executed R('l0 = list(d0, d0)')
+INFO:root:Executed R('l1 = list(d0, d1, d0)')
+INFO:root:Executed R('l2 = list(d0, d1, d1)')
+ERROR:root:(1 points) Checking R('0 == num.factors2(l0)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('1 == num.factors2(l1)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('2 == num.factors2(l2)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+INFO:root:Executed R('a = 1:5')
+INFO:root:Executed R('b = 5:1')
+ERROR:root:(1 points) Checking R('a*a == sum.or.product(a,a)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('a*b == sum.or.product(a,b)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('a*b == sum.or.product(b,a)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('a+2*b == sum.or.product((a+b),b)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+INFO:root:Executed R('y0 = 2')
+INFO:root:Executed R('odd0 = FALSE')
+INFO:root:Executed R('y1 = c(rep(0,5),rep(-2,2))')
+INFO:root:Executed R('odd1 = rep(FALSE,7)')
+ERROR:root:(1 points) Checking R('odd0 == odd(y0)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('!odd0 == odd(y0, flip=TRUE)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('odd1 == odd(y1)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('!odd1 == odd(y1, flip=TRUE)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('1 == sum.adm(1:2)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('1 == sum.adm(-c(1:2))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('is.na(sum.adm(c(1:2,NA)))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:(1 points) Checking R('1 == sum.adm(c(1:2,NA), na.rm=TRUE)')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Traceback error
+ERROR:root:Got exception:
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+ERROR:root:Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+Traceback (most recent call last):
+  File "build/bdist.linux-x86_64/egg/gradebook/score.py", line 140, in check
+    result = eval(command, g)
+  File "<string>", line 1, in <module>
+  File "/usr/lib64/python2.7/site-packages/rpy2/robjects/vectors.py", line 233, in __getitem__
+    res = super(Vector, self).__getitem__(i)
+IndexError: Index out of range.
+INFO:root:Executed R('set.seed(42)')
+ERROR:root:(1 points) Checking R('all.equal(c(42,39), replicate(2, flip.sum()))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, list
+ERROR:root:(1 points) Checking R('all.equal(c(7,12), replicate(2, flip.sum(2)))')[0]
+ERROR:root:... Expecting: True
+ERROR:root:... But got:   Modes: numeric, list
+ERROR:root:(1 points) Checking Does the histogram look correct?
+ERROR:root:... Expecting: False
+ERROR:root:... But got:   n
+INFO:root:You got a 1 out of 30.
