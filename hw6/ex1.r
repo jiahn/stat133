@@ -102,7 +102,7 @@ tryCatch(checkEquals(hw6$fpr.t1, fpr(0.5, hw6$tpr.pr, hw6$tpr.tr)),
 # tprs = the true positive rates over your threshold grid
 # fprs = the false positive rates over your threshold grid
 
-plotROC <- function(predicted, truth, add=F, ...) {
+plotROC <- function(predicted, truth, add=F, type='l', ...) {
 
     thresh.grid = seq(0.00, 1.00, 0.01)
     i = length(thresh.grid)
@@ -124,11 +124,12 @@ plotROC <- function(predicted, truth, add=F, ...) {
     names(tpr.fpr.list) = c("tprs", "fprs")
     
     if(add == FALSE) {
-      plot(tprs, fprs, xlab = "tpr", ylab = "fpr")
+      plot(fprs, tprs, xlab = "fpr", ylab = "tpr", main = "ROC curve")
+      abline(a = 0, b = 1)
       return(tpr.fpr.list)
     }
     else
-      lines(tprs, fprs, xlab = "tpr", ylab = "fpr")
+      lines(fprs, tprs, xlab = "fpr", ylab = "tpr")
       return(tpr.fpr.list)
       
     
@@ -150,6 +151,8 @@ library(rpart)
 library(randomForest)
 spam <- list()
 spam$data <- read.csv('spam-data.csv', header=F)
+spam$data[,58] = factor(spam$data[,58])
+colnames(spam$data)[58] = "spam"
 
 # Before running a classifier, please split your data into training and test
 # sets. To do this, randomly sample 3,500 observtions from your dataset using
@@ -157,6 +160,10 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # "spam". Store the remaining observations as the element "test" in the list
 # "spam".
 # ***Make sure to set your seed to 47 before sampling***
+
+set.seed(47)
+spam$train = spam$data[sample(nrow(spam$data), 3500), ]
+spam$test = spam$data[-sample(nrow(spam$data), 3500), ]
 
 --
 
@@ -169,6 +176,13 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # parameters.  *** Make sure to set your seed to 47 before fitting your
 # models***
 
+set.seed(47)
+pred.rp = rpart(spam~., method="class", data=data.frame(y=spam$train[58], spam$train[-58]))
+printcp(pred.rp)
+
+pred.rf = randomForest(spam~., data=data.frame(y=spam$train[58], spam$train[-58]), ntree = 250)
+#varImpPlot(pred.rf, sort=TRUE)
+
 --
 
 # Evaluate your two models using your plotROC function. Store the outputs as
@@ -177,6 +191,8 @@ spam$data <- read.csv('spam-data.csv', header=F)
 # convert your spam variable back to a 0-1 valued vector depending on how you
 # wrote your plotROC function.
 # Add a legend in the bottom right indicating the the model that each curve represents.
+  
+plotROC(pred.rp$y, as.numeric(unlist(spam$train[58])))
 
 --
   
@@ -201,7 +217,15 @@ spam$data <- read.csv('spam-data.csv', header=F)
 
 constrainedFPR <- function(tpr, fpr, tpr.constraint) {
 
-    # your code here
+    tf = length(tpr) == length(fpr)
+    
+    if (tf == FALSE) {
+      stop("unequal input lengths")
+    }
+    else
+      
+    const.pos = tail(which((tpr >= tpr.constraint) == TRUE), 1)
+    return(fpr[const.pos])
 }
 
 tryCatch(checkEquals(hw6$constrainedFPR.t1, constrainedFPR(hw6$plotROC.t1$tprs,
