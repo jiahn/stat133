@@ -129,7 +129,7 @@ plotROC <- function(predicted, truth, add=F, type='l', ...) {
       return(tpr.fpr.list)
     }
     else
-      lines(fprs, tprs, xlab = "fpr", ylab = "tpr")
+      lines(fprs, tprs)
       return(tpr.fpr.list)
       
     
@@ -178,7 +178,7 @@ spam$test = spam$data[-sample(nrow(spam$data), 3500), ]
 
 set.seed(47)
 pred.rp = rpart(spam~., method="class", data=data.frame(y=spam$train[58], spam$train[-58]))
-printcp(pred.rp)
+#printcp(pred.rp)
 
 pred.rf = randomForest(spam~., data=data.frame(y=spam$train[58], spam$train[-58]), ntree = 250)
 #varImpPlot(pred.rf, sort=TRUE)
@@ -192,7 +192,8 @@ pred.rf = randomForest(spam~., data=data.frame(y=spam$train[58], spam$train[-58]
 # wrote your plotROC function.
 # Add a legend in the bottom right indicating the the model that each curve represents.
   
-plotROC(pred.rp$y, as.numeric(unlist(spam$train[58])))
+rp.output = plotROC(pred.rp$y - 1, as.numeric(unlist(spam$train[58])) - 1)
+rf.output = plotROC((as.numeric(pred.rf$y) - 1), as.numeric(unlist(spam$train[58])) - 1, add=TRUE)
 
 --
   
@@ -243,4 +244,5 @@ tryCatch(checkEquals(hw6$constrainedFPR.t1, constrainedFPR(hw6$plotROC.t1$tprs,
 # <min.fpr.rf>? Use the same grid of probabilities as in your plotROC function
 # and store these values as <rp.threshold>.
 
---
+min.fpr.rp = constrainedFPR(rp.output$tprs, rp.output$fprs, 0.95)
+min.fpr.rf = constrainedFPR(rf.output$tprs, rf.output$fprs, 0.95)
