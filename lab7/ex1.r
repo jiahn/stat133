@@ -56,9 +56,10 @@ tryCatch(checkEquals(lab7$dataGenerator.t, dataGenerator(lab7$predictors, 4, 4))
 
 betaEstimator <- function(X, betas, var) {
 
+  set.seed(47)
   values = dataGenerator(X, betas, var)
-  XYE = lsfit(X, y = values, wt = NULL, intercept = FALSE)
-  return(XYE$coefficient)
+  XYE = lsfit(X, y = values, wt = NULL, intercept = TRUE)
+  return(XYE$coefficient[2])
 
 }
 
