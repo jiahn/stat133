@@ -10,14 +10,32 @@ load('lab7-tests.rda')
 # <var>: the variance of the error term epsilon in the regression equation
 #   (sigma^2)
 #
-# Your function should return (Y) a length <n> vector of responses: Y=X<betta> +
+# Your function should return (Y) a length <n> vector of responses: Y=X<beta> +
 # epsilon. If length(<betas>) is not equal to ncol(<X>), your function should
 # throw the error: "length betas does not match p"
 
 dataGenerator <- function(X, betas, var) {
 
-    # your code here
-
+    X = as.matrix(X)
+    if ((length(betas) != ncol(X)) == TRUE) {
+      stop("length betas does not match p")
+    }
+    else 
+      
+    Y = c()
+    i = nrow(X)
+    epsilon = rnorm(i, mean = 0, sd = sqrt(var))
+    
+    
+    for (i in 1:i) {
+      val = (X[i] * betas) + epsilon[i]
+      Y = rbind(Y, val)
+    }
+    
+    Y = as.numeric(Y)
+    Y = as.matrix(Y)
+    return(Y)
+    
 }
 
 set.seed(47)
@@ -38,7 +56,9 @@ tryCatch(checkEquals(lab7$dataGenerator.t, dataGenerator(lab7$predictors, 4, 4))
 
 betaEstimator <- function(X, betas, var) {
 
-    # your code here
+  values = dataGenerator(X, betas, var)
+  XYE = lsfit(X, y = values, wt = NULL, intercept = FALSE)
+  return(XYE$coefficient)
 
 }
 
@@ -60,7 +80,7 @@ tryCatch(checkEquals(lab7$betaEstimator.t, betaEstimator(lab7$predictors, 4, 4))
 
 betaVariance <- function(X, var) {
 
-    # your code here
+    rnorm(length(X), mean = )
 
 }
 
