@@ -69,7 +69,7 @@ tryCatch(checkEquals(lab7$betaEstimator.t, betaEstimator(lab7$predictors, 4, 4))
 
 
 # It turns out that under certain assumptions, our estimates of beta follow a
-# normal distribution with mean beta and variance (X^T X) ^ -1
+# normal distribution with mean beta and variance (X^T X) ^ -1*sigma^2
 # *sigma^2. Implement the function betaVariance. Your function should take the
 # following arguments:
 #
@@ -80,8 +80,9 @@ tryCatch(checkEquals(lab7$betaEstimator.t, betaEstimator(lab7$predictors, 4, 4))
 # hat.
 
 betaVariance <- function(X, var) {
-
-    rnorm(length(X), mean = )
+  
+  betas = rnorm(1, mean = 4, sd = sqrt(var))
+  return(betaEstimator(X, betas, var))
 
 }
 
@@ -98,6 +99,10 @@ tryCatch(checkEquals(lab7$betaVariance.t, betaVariance(lab7$predictors, 4)),
 # this value as prop.2sd.
 # ***make sure to set your seed to 47 before running your simulations***
 
+predictors = rnorm(100, mean = 0 , sd = sqrt(1))
+p.beta = 3
+p.var = 2
+p.simulate = simulate(dataGenerator(predictors, p.beta, p.var), nsim = 1000, seed = 47)
 # beta.hats <- your code here
 # prop.2sd <- your code here
 
