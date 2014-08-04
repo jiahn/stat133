@@ -223,5 +223,6 @@
     "login": "jiahn", 
     "name": "Ji Ahn", 
     "status": "enrolled", 
-    "url": "git@github.com:jiahn/stat133.git"
+    "url": "git@github.com:jiahn/stat133.git", 
+    "type": "students"
 }
