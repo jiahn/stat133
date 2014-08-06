@@ -13,7 +13,7 @@ father.son <- read.csv("father-son.csv")
 ## fathers' heights (x-axis). Use pch = 20 in your call to plot.
 
 fs.scatterplot <- function() {
-    YOUR.CODE.HERE
+    plot(father.son$fheight, father.son$sheight, pch = 20)
 }
 
 fs.scatterplot()
@@ -21,8 +21,11 @@ fs.scatterplot()
 ## Fit a linear model (see "lm") to the data, and call this "fs.lm".
 ## What are the coefficients? Save this in a variable named "fs.coef"
 
-(fs.lm <- YOUR.CODE.HERE)
-(fs.coef <- YOUR.CODE.HERE)
+sheight = father.son$sheight
+fheight = father.son$fheight
+
+fs.lm <- lm(sheight ~ fheight)
+fs.coef <- fs.lm$coefficients
 
 ## Write a function "fs.predict" that takes a fitted "lm" object and a
 ## vector of father heights and outputs the predicted heights of their
@@ -36,7 +39,8 @@ fs.scatterplot()
 ## Hint: Look up "predict.lm"
 
 fs.predict <- function(fs.lm, new.fheight) {
-    YOUR.CODE.HERE
+    a.v = predict(fs.lm, data.frame(fheight = new.fheight))
+    return(a.v)
 }
 
 test(unname(fs.predict(fs.lm, 70)), 69.8731, tolerance = 0.0001)
@@ -46,7 +50,8 @@ test(unname(fs.predict(fs.lm, 70)), 69.8731, tolerance = 0.0001)
 ## distributed?
 
 plot.residuals <- function() {
-    YOUR.CODE.HERE
+    plot(fs.lm$fitted.values, fs.lm$residuals)
+    abline(0, 0)
 }
 
 plot.residuals()
@@ -65,7 +70,7 @@ plot.residuals()
 ## Save the confidence interval as a vector of length 2 named
 ## fheight.slope.confidence.interval
 
-fheight.slope.confidence.interval <- YOUR.CODE.HERE
+fheight.slope.confidence.interval = as.vector(confint(fs.lm)[1,])
 
 ## There are two types of intervals we may be interested in when doing
 ## linear modeling. One interval, called the "confidence interval" or
@@ -91,7 +96,9 @@ fheight.slope.confidence.interval <- YOUR.CODE.HERE
 ## Hint look at the helm for "predict" or "predict.lm"
 
 fs.confidence <- function(fs.lm, new.fheight) {
-    YOUR.CODE.HERE
+    a.val = predict(fs.lm, data.frame(fheight = new.fheight), interval = "confidence")
+    conf.matrix = matrix(c(as.vector(a.val[,2]),as.vector(a.val[,3])), nrow = length(new.fheight))
+    return(conf.matrix)
 }
 
 test(unname(fs.confidence(fs.lm, 70)), c(69.68266380, 70.06357032))
@@ -103,7 +110,18 @@ test(unname(fs.confidence(fs.lm, 70)), c(69.68266380, 70.06357032))
 ## 2 lines for the lower and upper 95% prediction interval - in blue
 
 plot.bands <- function() {
-    YOUR.CODE.HERE
+  
+    fs.scatterplot()
+    abline(fs.lm, col = 'red')
+    
+    conf = predict(fs.lm, data.frame(fheight = father.son$fheight), interval = "confidence")
+    lines(fheight, conf[, "lwr"], lty = 'dotted', col = 'green')
+    lines(fheight, conf[, "upr"], lty = 'dotted', col = 'green')
+     
+    pred = predict(fs.lm, data.frame(fheight = father.son$fheight), interval = "prediction")
+    lines(fheight, pred[ , "lwr"], lty = 'dotted', col = 'blue')
+    lines(fheight, pred[ , "upr"], lty = 'dotted', col = 'blue')
+    
 }
 
 plot.bands()
