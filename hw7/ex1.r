@@ -141,10 +141,13 @@ plot.bands()
 ## value).
 
 r.squared <- function(y, y.fitted) {
-    YOUR.CODE.HERE
+  
+    df.lm = lm(y.fitted ~ y)
+    df.rsq = 1 - sum(((df.lm$residuals)^2) / (sum(((df.lm$model[,1]) - (mean(df.lm$model[,1])))^2)))
+    return(df.rsq)
 }
 
 ## What is the r.squared of our linear model on the father-son data?
 ## Save this in a variable named "fs.rsquared"
 
-(fs.rsquared <- YOUR.CODE.HERE)
+fs.rsquared <- r.squared(father.son$fheight, father.son$sheight)
