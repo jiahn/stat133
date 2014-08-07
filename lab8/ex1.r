@@ -10,7 +10,7 @@ load('lab8-tests.rda')
 # <n2>: the number of observations to generate from the second dist'n
 # <mu1>: the mean of the first normal dist'n
 # <var1>: the variance of the first normal dist'n
-# <mu2>: the mena of the second normal dist'n
+# <mu2>: the mean of the second normal dist'n
 # <var2>: the variance of the second normal dist'n
 #
 # Your function should generate <n1> + <n2> random variables. The first <n1>
@@ -19,7 +19,9 @@ load('lab8-tests.rda')
 
 normalMixture <- function(n1, n2, mu1, var1, mu2, var2) {
 
-    # your code here
+    n1.vals = rnorm(n1, mean = mu1, sd = sqrt(var1))
+    n2.vals = rnorm(n2, mean = mu2, sd = sqrt(var2))
+    return(c(n1.vals, n2.vals))
 
 }
 
@@ -42,7 +44,9 @@ tryCatch(checkEquals(lab8$normalMixture.t, output.1),
 
 logGenerator<- function(X, beta0, beta1) {
 
-    # your code here
+    y=(beta0)+(beta1)*X
+    log.vals = 1/(1+exp(-y))
+    return(log.vals)
 }
 
 set.seed(47)
@@ -80,7 +84,7 @@ tryCatch(checkEquals(lab8$toBinom.t, output.3), error=function(err) errMsg(err))
 
 mae <- function(true.vals, pred.vals) {
 
-    # your code here
+    return(mean(abs(pred.vals - true.vals)))
 
 }
 
