@@ -65,7 +65,8 @@ tryCatch(checkEquals(lab8$logGenerator.t, output.2), error=function(err)
 
 toBinom <- function(p) {
 
-    # your code here
+    binom.vals = rbinom(length(p), 1, p)
+    return(binom.vals)
 
 }
 
