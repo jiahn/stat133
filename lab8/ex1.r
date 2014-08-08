@@ -94,13 +94,14 @@ tryCatch(checkEquals(1, mae(1:5, 2:6)), error=function(err) errMsg(err))
 # Generate predictor variables using your normalMixture with n1=50, n2=50,
 # mu1=-1, mu2=1, var1=var2=1. Store this value as the variable
 # <x.vals>. Using this data, generate probabilities with your logGenerator
-# function by setting beta0=??? and beta1=???. Store this variable as
+# function by setting beta0=0 and beta1=5. Store this variable as
 # <p.vals>. Using these values, generate binomial random variables using your
 # toBinom function. Store this data as <y.vals>. Create a dataframe called
 # <model.data> where the first column is <x.vals> and the second is
 # <y.vals>. Name these columns x and y respectively. Fit linear and logistic
-# regression models predicting y from x with data=<model.data>. Call these
-# models <fit.lm> and <fit.log>. Run R's predict function on each of your models
+# regression models predicting y from x with data=<model.data>. 
+
+# Call these models <fit.lm> and <fit.log>. Run R's predict function on each of your models
 # (make sure to set type='response' for logistic regression) and name these
 # outputs <preds.lm> and <preds.log>. Use your mae function to evaluate the mean
 # absolute error between predicted values and <p.vals>. Store these output as
@@ -109,4 +110,18 @@ tryCatch(checkEquals(1, mae(1:5, 2:6)), error=function(err) errMsg(err))
 #otherwise***
 
 set.seed(47)
+x.vals = normalMixture(50, 50, -1, 1, 1, 1)
+p.vals = logGenerator(x.vals, 0, 5)
+y.vals = toBinom(p.vals)
 
+model.data = data.frame(x.vals, y.vals)
+names(model.data) = c("X", "Y")
+
+fit.lm = lm(model.data$Y ~ model.data$X)
+fit.log = glm(model.data$Y ~ model.data$X)
+
+preds.lm = predict(fit.lm, data.frame(x = model.data$X), interval = "prediction")
+preds.log = predict(fit.log, data.frame(x = model.data$X), interval = "response")
+
+mae.lm = mae(p.vals, as.vector(preds.lm[,1]))
+mae.log = mae(p.vals, as.vector(preds.log))
