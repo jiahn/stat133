@@ -235,6 +235,23 @@
                     "earned": 14
                 }
             }
+        }, 
+        "hw6": {
+            "note": "", 
+            "hash": "22a4ba050e615f2d210482b2542e876cba7b9013", 
+            "earned": 10, 
+            "possible": 30, 
+            "penalty": 0, 
+            "parts": {
+                "ex1_fig": {
+                    "possible": 10, 
+                    "earned": 0
+                }, 
+                "ex1": {
+                    "possible": 20, 
+                    "earned": 10
+                }
+            }
         }
     }, 
     "login": "jiahn", 
