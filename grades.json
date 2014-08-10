@@ -265,6 +265,19 @@
                     "earned": 8
                 }
             }
+        }, 
+        "lab8": {
+            "note": "", 
+            "hash": "861b3caee3eae79837a111bba72698013fe8c4eb", 
+            "earned": 27, 
+            "possible": 30, 
+            "penalty": 0, 
+            "parts": {
+                "ex1": {
+                    "possible": 30, 
+                    "earned": 27
+                }
+            }
         }
     }, 
     "login": "jiahn", 
