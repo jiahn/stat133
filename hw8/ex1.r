@@ -43,7 +43,10 @@ set.seed(42)
 # and standard deviation.
 
 heights = function(n, ave, sd) {
-    # your code here
+  
+    heights.val = rnorm(n, mean = ave, sd = sd)
+    return(heights.val)
+    
 }
 
 # (0 points) The weights function is already implemented
@@ -61,8 +64,11 @@ weights = heights
 # from the uniform distribution between the oldest and youngest
 # person.
 
-ages = function(n, min, sd) {
-    # your code here
+ages = function(n, min, max) {
+  
+    ages.vec = runif(n, min = min, max = max)
+    return(ages.vec)
+    
 }
 
 # (1 point) Implement the convert.heights function
@@ -75,7 +81,10 @@ ages = function(n, min, sd) {
 # by multiplying by 0.393701.
 
 convert.heights = function(heights) {
-    # your code here
+  
+    convert = heights*0.393701
+    return(convert)
+    
 }
 
 # (1 point) Implement the convert.weights function
@@ -88,7 +97,10 @@ convert.heights = function(heights) {
 # by multiplying by 2.20462.
 
 convert.weights = function(weights)  {
-    # your code here
+    
+    convert = weights*2.20462
+    return(convert)
+    
 }
 
 # (2 points) Implement the compute.bmi function
@@ -106,7 +118,14 @@ convert.weights = function(weights)  {
 # weight in kg divided by their squared heights in m
 
 compute.bmi = function(heights, weights)  {
-    # your code here
+    
+    if(length(heights) != length(weights)) {
+      return(NULL)
+    }
+    else
+      BMI.index = weights / ((heights)/100)^2
+    return(BMI.index)
+    
 }
 
 # Now you are going to create some datastructures using these functions
@@ -125,15 +144,21 @@ compute.bmi = function(heights, weights)  {
 #   age is the result of calling ages
 
 female$df.base = data.frame(
-    # your code here
+    c(heights(female$n, female$ave.height, all$height.sd)),
+    c(weights(female$n, female$ave.weight, all$weight.sd)), 
+    c(ages(female$n, all$young, all$old))
 )
+names(female$df.base) = c("height", "weight", "age")
 
 # (1 point) Create a dataframe male$df.base
 # same as above but for males
 
 male$df.base = data.frame(
-    # your code here
+  c(heights(male$n, male$ave.height, all$height.sd)),
+  c(weights(male$n, male$ave.weight, all$weight.sd)), 
+  c(ages(male$n, all$young, all$old))
 )
+names(male$df.base) = c("height", "weight", "age")
 
 # (1 point) Create a dataframe female$df
 # The names should be as follows:
@@ -150,15 +175,27 @@ male$df.base = data.frame(
 #    on the relevant parts of female$df.base
 
 female$df = data.frame(
-    # your code here
+    c(female$df.base[["height"]]),
+    c(female$df.base[["weight"]]),
+    c(female$df.base[["age"]]),
+    c(convert.heights(female$df.base[["height"]])),
+    c(convert.weights(female$df.base[["weight"]])),
+    c(compute.bmi(female$df.base[["height"]],female$df.base[["weight"]]))
 )
+names(female$df) = c("heights", "weights", "age", "heights_in_in", "weights_in_lbs", "bmi")
 
 # (1 point) Create a dataframe male$df
 # same as above but for males
 
 male$df = data.frame(
-    # your code here
+  c(male$df.base[["height"]]),
+  c(male$df.base[["weight"]]),
+  c(male$df.base[["age"]]),
+  c(convert.heights(male$df.base[["height"]])),
+  c(convert.weights(male$df.base[["weight"]])),
+  c(compute.bmi(male$df.base[["height"]],male$df.base[["weight"]]))
 )
+names(male$df) = c("heights", "weights", "age", "heights_in_in", "weights_in_lbs", "bmi")
 
 # (1 point) Create a dataframe all$df
 # The first rows of this dataframe consist of female$df
@@ -170,7 +207,8 @@ male$df = data.frame(
 # [1] "heights"        "weights"        "age"            "heights_in_in" 
 # [5] "weights_in_lbs" "bmi"            "gender"
 
-# all$df = # your code here
+combined = rbind(female$df, male$df)
+all$df = cbind(combined, gender = c(rep("f", 100), rep("m", 100)))
 
 # (2 points) Plot a scatterplot matrix from the first three columns of all$df
 # Make sure that females are colored red and males are colored blue
@@ -178,18 +216,17 @@ male$df = data.frame(
 # You many want to read more here:
 #  http://www.stat.berkeley.edu/classes/s133/R-4a.html
 
-# your code here
+plot(all$df[,1:3], col=c(rep('red', 100), rep('blue', 100)))
 
 # (2 points) Plot a scatterplot matrix from the first six columns of all$df
 # Again make sure that females are colored red and males are colored blue
 
-# your code here
+plot(all$df[,1:6], col=c(rep('red', 100), rep('blue', 100)))
 
 # (1 point) Create a prcomp object from all$df called pca
 # You will need to remove non-numeric columns first
 
-# pca = # your code here
-
+pca = prcomp(all$df[,-7])
 
 # (4 points) Plot data projected on its principal components
 #
@@ -201,34 +238,37 @@ male$df = data.frame(
 #
 # Again make sure that females are colored red and males are colored blue
 
-# your code here
+par(mfrow = c(2,2))
+plot(pca$x[,1:2], col=c(rep('red', 100), rep('blue', 100)))
+plot(pca$x[,2:3], col=c(rep('red', 100), rep('blue', 100)))
+plot(pca$x[,1:3], col=c(rep('red', 100), rep('blue', 100)))
+plot(pca$x[,3:4], col=c(rep('red', 100), rep('blue', 100)))
 
 # (1 point) Create a kmeans object using all$df
 # set k to 2 and make sure that you use 10 different initial conditions
 
-# full.km # your code here
+full.km = kmeans(all$df[,-7], centers = 2)
 
 # (1 point) Create a hclust object using all$df
 
-# full.hclust = # your code here
+full.hclust = dist(all$df[,-7], method = 'euclidean')
 
 # (1 point) Find the labels using cutree with k=2
 
-# full.hclust.labels = # your code here
+full.hclust.labels = as.vector(cutree(hclust(full.hclust), k=2))
  
 # (1 point) Create a kmeans object using just the first two columns of all$df
 # set k to 2 and make sure that you use 10 different initial conditions
 
-# red.km = # your code here
+red.km = kmeans(all$df[,1:2], centers = 2)
 
 # (1 point) Create a hclust object using just the first two columns of all$df
 
-# red.hclust = # your code here
+red.hclust = dist(all$df[,1:2], method = 'euclidean')
 
 # (1 point) Find the labels using cutree with k=2
 
-# red.hclust.labels = # your code here
-
+red.hclust.labels = as.vector(cutree(hclust(red.hclust), k=2))
 
 # (4 point) Plot the data projected on its first two dimensions
 # (i.e., height and weight).  
@@ -244,4 +284,8 @@ male$df = data.frame(
 # you shouldn't try to make sure the colors are necessarily coded
 # to female and male.
 
-# your code here
+par(mfrow = c(2,2))
+plot(full.km$cluster, main = "kmeans (full)", col = 'blue')
+plot(full.hclust.labels, main = "hclust (full)", col = 'blue')
+plot(red.km$cluster, main = "kmeans (reduced)", col = 'red')
+plot(red.hclust.labels, main = "hclust (reduced)", col = 'red')
