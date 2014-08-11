@@ -278,6 +278,23 @@
                     "earned": 27
                 }
             }
+        }, 
+        "hw7": {
+            "note": "", 
+            "hash": "7bd870bb28902c940c8ef1d696de9745a500e71a", 
+            "earned": 24, 
+            "possible": 30, 
+            "penalty": 0, 
+            "parts": {
+                "ex1_fig": {
+                    "possible": 12, 
+                    "earned": 12
+                }, 
+                "ex1": {
+                    "possible": 18, 
+                    "earned": 12
+                }
+            }
         }
     }, 
     "login": "jiahn", 
