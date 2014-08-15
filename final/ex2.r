@@ -14,8 +14,8 @@ load('ex2.rda')
 # their homework grade. Store these as the variables <fit.final> and <fit.labs>
 # respectively
 
-# fit.final = your code here
-# fit.labs = your code here
+fit.final = lm(grades$final ~ grades$hw)
+fit.labs = lm(grades$labs ~ grades$hw)
 
 
 # (2 points)
@@ -26,7 +26,7 @@ load('ex2.rda')
 #
 # "final" or "labs"
 
-# contant.var.model = your code here
+contant.var.model = final
 
 
 # (3 points)
@@ -37,9 +37,9 @@ load('ex2.rda')
 # will need to be accurate up to 5 decimal places)? Store
 # this as the variable <final.r.sq>
 
-# final.slope = your code here
-# labs.intercept = your code here
-# final.r.sq = your code here
+final.slope = unname(fit.final$coefficients[2])
+labs.intercept = unname(fit.labs$coefficients[1])
+final.r.sq = unname(unlist(summary(fit.final)["r.squared"]))
 
 # (2 points)
 # Consider a model that predicts an individual's final score using the following
@@ -50,9 +50,9 @@ load('ex2.rda')
 # hw = individual's actual hw score
 #
 # Please compute the squared residuals for this model (this should be a length
-# 100 numeric vector). Store this as the variable <sq.residuals>.
+# 300 numeric vector). Store this as the variable <sq.residuals>.
 
-# sq.residuals = your code here
+sq.residuals = as.numeric(fit.final$residuals)^2
 
 
 # (3 points)
@@ -61,5 +61,22 @@ load('ex2.rda')
 # variable <final.pi>. What fraction of the final scores fall within their
 # respective prediction interval?  Store this as the variable <prop.within>.
 
-# final.pi = your code here
-# prop.within = your code here
+newdata = data.frame(fit.final$fitted.values)
+final.pi = predict(fit.final, newdata, interval="predict", level=0.90)
+final.pi = as.matrix(final.pi)
+
+i = nrow(final.pi)
+vec = c()
+
+for( i in 1:i) {
+  modelval = fit.final$model[i,1]
+  TF1 = (modelval > final.pi[i,2])
+  TF2 = (modelval < final.pi[i,3])
+  
+  if (TF1 == TRUE & TF2 == TRUE) {
+    vec = c(vec, modelval)
+  }
+
+}
+
+prop.within = length(vec) / i
