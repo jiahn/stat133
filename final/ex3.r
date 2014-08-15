@@ -35,7 +35,25 @@ load("ex3.rda")
 # of NA values is strictly greater than the 'threshold'.
 
 too.many.na = function(df, threshold, axis) {
-    # your code here
+    
+  if (axis = 1) {
+    vals = c()
+    i = nrow(df)
+    for ( i in 1:i) {
+       na.val = sum(is.na(df[i,]))
+       vals = c(vals, na.val)
+    }
+    return(vals)
+  }
+  else
+    
+    vald = c()
+  b = ncol(df)
+  for ( b in 1:b) {
+    nb.val = sum(is.na(df[,b]))
+    vald = c(vald, nb.val)
+  }
+    return(vald)
 }
 
 testdf1 = data.frame(1:4, c(NA,1,2,3))
@@ -52,8 +70,8 @@ tryCatch(checkEquals(0, length(too.many.na(testdf1, 0.6, 1))),
 # 
 # Takes the following arguments:
 #   x: a numeric vector
-#   rm.na: TRUE or FALSE, if true, any ‘NA’ and ‘NaN’'s are removed
-#          from ‘x’ before the quantiles are computed.
+#   rm.na: TRUE or FALSE, if true, any âNAâ and âNaNâ's are removed
+#          from âxâ before the quantiles are computed.
 #
 # Returns a numeric vector containing two elements. The first element is the
 # lower cutoff. The second element is the upper cutoff.  For the purpose of the
